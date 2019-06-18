@@ -1,0 +1,16 @@
+---
+minikube_version: "v0.28.0"
+minikube_kubernetes_version: "v1.10.4"
+minikube_installation_path_prefix: "{{ lookup('env', 'HOME') }}/minikube"
+minikube_download_url: "https://storage.googleapis.com/minikube/releases/{{ minikube_version }}/minikube-darwin-amd64"
+minikube_executable_path: "{{ minikube_installation_path_prefix }}/bin/minikube-darwin-amd64-{{ minikube_version }}"
+minikube_executable_symlink_path: "{{ minikube_installation_path_prefix }}/bin/minikube"
+
+minikube_discovery_script_path: "{{ minikube_installation_path_prefix }}/minikube_discovery.sh"
+minikube_add_to_path: false
+minikube_add_to_path_in: "{{ lookup('env', 'HOME') }}/.bash_profile"
+
+minikube_vm_driver: virtualbox
+minikube_allocate_memory: 8192
+
+minikube_helm_chart_configs_prefix: "{{ minikube_installation_path_prefix }}/helm_chart_configs"

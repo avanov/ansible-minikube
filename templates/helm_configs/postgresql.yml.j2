@@ -1,0 +1,11 @@
+---
+# https://github.com/kubernetes/charts/tree/master/stable/postgresql#configuration
+imageTag: 10.4-alpine
+postgresUser: postgres
+postgresPassword: password
+postgresDatabase: test-database
+
+service:
+  type: NodePort
+  port: 5432
+  nodePort: "30432"

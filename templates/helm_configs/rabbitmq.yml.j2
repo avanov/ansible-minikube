@@ -1,0 +1,13 @@
+---
+# https://github.com/kubernetes/charts/tree/master/stable/rabbitmq#configuration
+image:
+  repository: "bitnami/rabbitmq"
+  tag: 3.7.6
+rabbitmq:
+  username: guest
+  password: guest
+  nodePort: "5672"
+
+# https://github.com/kubernetes/charts/tree/master/stable/rabbitmq-ha#upgrading-the-chart
+rabbitmqErlangCookie: "fa352e11fee6358241a34fa340117299"
+serviceType: NodePort

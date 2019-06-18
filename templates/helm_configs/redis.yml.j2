@@ -1,0 +1,14 @@
+---
+# https://github.com/kubernetes/charts/tree/master/stable/redis#configuration
+image:
+  repository: redis
+  tag: "4.0.9-alpine"
+usePassword: false
+cluster:
+  # do not use master/slave topology
+  enabled: false
+master:
+  port: "6379"
+  service:
+    type: NodePort
+    nodePort: "30379"

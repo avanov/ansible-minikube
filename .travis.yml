@@ -1,0 +1,17 @@
+---
+os: osx
+# 'language: python' is an error on Travis CI macOS
+language: shell
+#env:
+#before_install:
+#  - sudo apt-get update -qq
+#  - sudo apt-get install -qq python-apt python-pycurl
+install:
+  - pip install ansible==2.8.1
+script:
+  - echo localhost > inventory
+  - ansible-playbook -i inventory test.yml --syntax-check
+  - ansible-playbook -i inventory test.yml --connection=local --become-user root -vvv --diff
+  - ansible-playbook -i inventory test_update.yml --syntax-check
+  - ansible-playbook -i inventory test_update.yml --connection=local --become-user root -vvv --diff
+#after_failure:

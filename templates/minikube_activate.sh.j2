@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "Activating Minikube"
+{{ minikube_executable_symlink_path }} config set WantReportErrorPrompt false
+{{ minikube_executable_symlink_path }}\
+    start --kubernetes-version={{ minikube_kubernetes_version }} \
+          --vm-driver={{ minikube_vm_driver }} \
+          --memory={{ minikube_allocate_memory }}
+
+# This shadows host docker setup with minikube one
+eval $({{ minikube_executable_symlink_path }} docker-env)
+
+# Point kubectl context on minikube
+kubectl config set-context minikube

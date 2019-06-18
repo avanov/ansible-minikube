@@ -1,0 +1,20 @@
+---
+- name: Install Kubernetes prerequisites
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - kubectl
+    - kubernetes-helm
+
+- name: Download Minikube binary distribution
+  get_url:
+    url: "{{ minikube_download_url }}"
+    dest: "{{ minikube_executable_path }}"
+    mode: "0744"
+
+- name: Symlink the most recent Minikube
+  file:
+    src: "{{ minikube_executable_path }}"
+    dest: "{{ minikube_executable_symlink_path }}"
+    state: link
